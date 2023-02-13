@@ -225,6 +225,9 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
   document.querySelector("#password").value = passwordArray.join("");
+  alert(
+    "Congradulations!\nYour Secure Password has been successfully Generated!"
+  );
 }
 
 //event listener to generate button
