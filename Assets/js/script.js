@@ -145,47 +145,51 @@ console.log("Number of Characters: " + passLength);
 // INTO ONE SINGLE FUNCTION AND MAKE THE RESULTS BE AVAILABLE
 //IN GLOBAL SCOPE
 
-var categoryCounter = 0;
+var categoryCounter = 1;
 
 //-------lowercase logic
 var lowerCase = confirm(
   "Do you want to include lowercase characters?\nYES - Click OK\nNO - Click Cancel"
 );
-if (lowerCase == true) {
-  categoryCounter++;
-}
-console.log("lowercase: " + lowerCase);
-console.log("Category Counter: " + categoryCounter);
+// console.log("lowerCase: ");
+// console.log(lowerCase);
+// if (lowerCase === true) {
+//   // var randomNumber = Math.floor(Math.random() * lowerCaseArray.length);
+//   categoryCounter++;
+// } else {
+//   console.log("lowerCase: " + lowerCase);
+// }
 
 //------UPPERCASE
 var upperCase = confirm(
   "Do you want to include UPPERCASE characters?\nYES - Click OK\nNO - Click Cancel"
 );
-if (upperCase == true) {
-  categoryCounter++;
-}
-console.log("UPPERCASE: " + upperCase);
-console.log("Category Counter: " + categoryCounter);
+// if (upperCase === true) {
+//   categoryCounter++;
+// }
+// console.log("UPPERCASE: ");
+// console.log(upperCase);
 
 //------Numeric
 var numericCase = confirm(
   "Do you want to include Numeric (0-9) characters?\nYES - Click OK\nNO - Click Cancel"
 );
-if (numericCase == true) {
-  categoryCounter++;
-}
-console.log("Numeric: " + numericCase);
-console.log("Category Counter: " + categoryCounter);
+// if (numericCase === true) {
+//   categoryCounter++;
+// }
+// console.log("Numeric: ");
+// console.log(numericCase);
 
 //------Special
 var specialCase = confirm(
   "Do you want to include Special characters?\n!'()*+,-.#/$:;&<=%>?@[]^_`{|}~  \n\nYES - Click OK\nNO - Click Cancel"
 );
-if (specialCase == true) {
-  categoryCounter++;
-}
-console.log("Special: " + specialCase);
-console.log("Category Counter: " + categoryCounter);
+// if (specialCase === true) {
+//   categoryCounter++;
+// }
+// console.log("Special Characters: ");
+// console.log(specialCase);
+// console.log("Categories TRUE Counter: " + categoryCounter);
 
 //if someone forgets to select at least one category they will be directed
 //to this series of alerts
@@ -201,6 +205,7 @@ if (categoryCounter == 0) {
   //4 independent boolean values from function-local to global scope
   //
 }
+
 // console.log("******TESTING******");
 // console.log("lowercase: " + lowerCase);
 // console.log("UPPERCASE: " + upperCase);
@@ -241,28 +246,83 @@ if (categoryCounter == 0) {
 //
 //ACTUAL PASSWORD GENERATION LOGIC
 
-// var userChoice = passLength;
-// console.log("userChoice: " + userChoice);
+var userChoice = passLength;
+console.log("Password Length: " + userChoice);
+var finalSymbols = [];
+let passwordArray = [];
+for (let i = 0; i < userChoice; i++) {
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  // just checking nesting stuff
 
-// for (let i = 0; i < userChoice; i++) {
-//   if (lowerCase == true) {
-//     console.log("Testing my FOR LOOP: -----------");
-//     console.log("Only choose if lowercase is TRUE");
-//   } else if (upperCase == true) {
-//     console.log("Only choose if UPPERCASE is TRUE");
-//   } else if (numericCase == true) {
-//     console.log("Only choose if Numeric is TRUE");
-//   } else if (specialCase == false) {
-//     console.log("Only choose if SpecialCase is TRUE");
-//   } else {
-//     alert(
-//       "At least 1 category for character type must be selected.\n(lowercase, UPPERCASE, Numeric, Special Characer)\nPlease try again."
-//     );
-//     alert(
-//       "OMG my apologies, this task was waaaaaaaaay more time consuming than\nI have been expecting, for now, please just refresh the page\n and just select at lest one of the categories <3"
-//     );
-//   }
-// }
+  if (lowerCase === true) {
+    var randomLower = Math.floor(Math.random() * lowerCaseArray.length);
+    finalSymbols.push(lowerCaseArray[randomLower]);
+  } else {
+    console.log("lowerCase: " + lowerCase);
+  }
+  //
+  if (upperCase === true) {
+    var randomUpper = Math.floor(Math.random() * upperCaseArray.length);
+    finalSymbols.push(upperCaseArray[randomUpper]);
+  } else {
+    console.log("UPPERCase: " + upperCase);
+  }
+  //
+  if (numericCase === true) {
+    var randomNumeric = Math.floor(Math.random() * numericCaseArray.length);
+    finalSymbols.push(numericCaseArray[randomNumeric]);
+  } else {
+    console.log("NumericCase: " + numericCase);
+  }
+  //
+  if (specialCase === true) {
+    var randomSpecial = Math.floor(Math.random() * specialCaseArray.length);
+    finalSymbols.push(specialCaseArray[randomSpecial]);
+  } else {
+    console.log("SpecialCase: " + specialCase);
+  }
+  //
+
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  //
+  // var randomLower = Math.floor(Math.random() * lowerCaseArray.length);
+  // var randomUpper = Math.floor(Math.random() * upperCaseArray.length);
+  // var randomNumeric = Math.floor(Math.random() * numericCaseArray.length);
+  // var randomSpecial = Math.floor(Math.random() * specialCaseArray.length);
+
+  //array with randomly generated symbols
+  var randomIndex = Math.floor(Math.random() * finalSymbols.length);
+  var finalChoice = finalSymbols[randomIndex];
+  passwordArray.push(finalChoice);
+}
+console.log("Password: " + passwordArray.join(""));
 
 //
 //
@@ -304,11 +364,12 @@ if (categoryCounter == 0) {
 
 // Write password to the #password input
 function writePassword() {
-  function generatePassword() {}
-  var password = generatePassword();
+  // function generatePassword() {}
+  // var password = generatePassword();
   var passwordText = document.querySelector("#password");
 
   passwordText.value = password;
+  document.querySelector("#password").value = passwordArray.join("");
 }
 
 // Add event listener to generate button
