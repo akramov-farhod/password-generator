@@ -1,4 +1,7 @@
 var generateBtn = document.querySelector("#generate");
+function restart() {
+  location.reload();
+}
 
 // Write password to the #password input
 function writePassword() {
@@ -32,6 +35,7 @@ function writePassword() {
     "y",
     "z",
   ];
+  console.log("lowerCaseArray: ");
   console.log(lowerCaseArray);
 
   // UPPERCASE CHARACTERS ARRAY
@@ -64,11 +68,13 @@ function writePassword() {
     "Y",
     "Z",
   ];
+  console.log("upperCaseArray: ");
   console.log(upperCaseArray);
 
   // Numeric CHARACTERS ARRAY
   // total 10 array members
   const numericCaseArray = ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"];
+  console.log("numericCaseArray: ");
   console.log(numericCaseArray);
 
   //SPECIAL CHARACTERS ARRAY
@@ -108,30 +114,33 @@ function writePassword() {
     "}",
     "~",
   ];
+  console.log("specialCaseArray: ");
   console.log(specialCaseArray);
 
   // AMOUNT OF CHARACTERS for PASSWORD LENGTH
   // the function that checks all the necessary
   // conditions for the user input before
   // they can move on to the next step.
-
   function passLengthFunction() {
     var amount = prompt(
       "How many characters would you like to make up your Password?"
     );
-    // if the password is less than 8 or more than 128
-    // user will get another chance at making the
-    // correct decision
-    if (amount < 8 || amount > 128) {
-      alert("Password must have at least 8 and no more than 128 characters");
-      amount = passLengthFunction();
-    }
     // if user made the right Selection,
     // then they will be notified of their choice
     // of password length and can continue
     // answering the rest of the prompts
-    else {
+    if (amount >= 8 && amount <= 128) {
       alert("Your password will be " + amount + " characters long. ");
+    }
+    // if the password is less than 8 or more than 128
+    // or anything thats not a number
+    // user will get another chance at making the
+    // correct decision
+    else {
+      alert(
+        "Please make sure to enter a number\nBigger than or equal to 8\n  and\nSmaller than or equal to 128"
+      );
+      amount = passLengthFunction();
     }
     return amount;
   }
@@ -139,113 +148,34 @@ function writePassword() {
   // assigning value developed by The function
   // to the variable passLength for global use
   var passLength = passLengthFunction();
-  // console.log("User's input for # of Characters: " + passLength);
 
   //SERIES OF CONFIRM METHODS
-  // VERY DRY CODE TO MAKE THIS PASSWORD GENERATOR WORK -_____-
-  // FOR SOME REASON I WAS UNABLE TO WRAP ALL THE CONFIRM METHODS
-  // INTO ONE SINGLE FUNCTION AND MAKE THE RESULTS BE AVAILABLE
-  //IN GLOBAL SCOPE
-
-  var categoryCounter = 1;
-
-  //-------lowercase logic
-  var lowerCase = confirm(
-    "Do you want to include lowercase characters?\nYES - Click OK\nNO - Click Cancel"
-  );
-  // console.log("lowerCase: ");
-  // console.log(lowerCase);
-  // if (lowerCase === true) {
-  //   // var randomNumber = Math.floor(Math.random() * lowerCaseArray.length);
-  //   categoryCounter++;
-  // } else {
-  //   console.log("lowerCase: " + lowerCase);
-  // }
-
-  //------UPPERCASE
-  var upperCase = confirm(
-    "Do you want to include UPPERCASE characters?\nYES - Click OK\nNO - Click Cancel"
-  );
-  // if (upperCase === true) {
-  //   categoryCounter++;
-  // }
-  // console.log("UPPERCASE: ");
-  // console.log(upperCase);
-
-  //------Numeric
-  var numericCase = confirm(
-    "Do you want to include Numeric (0-9) characters?\nYES - Click OK\nNO - Click Cancel"
-  );
-  // if (numericCase === true) {
-  //   categoryCounter++;
-  // }
-  // console.log("Numeric: ");
-  // console.log(numericCase);
-
-  //------Special
-  var specialCase = confirm(
-    "Do you want to include Special characters?\n!'()*+,-.#/$:;&<=%>?@[]^_`{|}~  \n\nYES - Click OK\nNO - Click Cancel"
-  );
-  // if (specialCase === true) {
-  //   categoryCounter++;
-  // }
-  // console.log("Special Characters: ");
-  // console.log(specialCase);
-  // console.log("Categories TRUE Counter: " + categoryCounter);
-
-  //if someone forgets to select at least one category they will be directed
-  //to this series of alerts
-  if (categoryCounter == 0) {
-    alert(
-      "You must select at least 1 category of character type\nto proceed with Secure Password Generation!"
+  var lowerCase;
+  var upperCase;
+  var numericCase;
+  var specialCase;
+  confirmSeries();
+  function confirmSeries() {
+    lowerCase = confirm(
+      "Do you want to include lowercase characters?\nYES - Click OK\nNO - Click Cancel"
     );
-    alert(
-      "Unfortunately i'm not skilled enough just yet\nto make this user friendly and simply direct you back to the \nYES/NO prompts\nInstead please work with me and just hit refresh\nand don't forget to select at least 1 category <3"
+
+    //------UPPERCASE
+    upperCase = confirm(
+      "Do you want to include UPPERCASE characters?\nYES - Click OK\nNO - Click Cancel"
     );
-    //i would insert the function to run the series of prompts in here,
-    //but for some reason i was unable to figure out how to pull out
-    //4 independent boolean values from function-local to global scope
-    //
+
+    //------Numeric
+    numericCase = confirm(
+      "Do you want to include Numeric (0-9) characters?\nYES - Click OK\nNO - Click Cancel"
+    );
+    //------Special
+    specialCase = confirm(
+      "Do you want to include Special characters?\n!'()*+,-.#/$:;&<=%>?@[]^_`{|}~  \n\nYES - Click OK\nNO - Click Cancel"
+    );
   }
 
-  // console.log("******TESTING******");
-  // console.log("lowercase: " + lowerCase);
-  // console.log("UPPERCASE: " + upperCase);
-  // console.log("Numeric: " + numericCase);
-  // console.log("Special: " + specialCase);
-  // console.log("******TESTING******");
-
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
+  //-------lowercase logic
   //ACTUAL PASSWORD GENERATION LOGIC
 
   var userChoice = passLength;
@@ -257,119 +187,45 @@ function writePassword() {
   var finalSymbols = [];
   let passwordArray = [];
   for (let i = 0; i < userChoice; i++) {
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    // just checking nesting stuff
-
+    // if user wants lowercase characters to be included
     if (lowerCase === true) {
       var randomLower = Math.floor(Math.random() * lowerCaseArray.length);
       finalSymbols.push(lowerCaseArray[randomLower]);
     }
-    //
+    // if user wants UPPERCASE characters to be included
     if (upperCase === true) {
       var randomUpper = Math.floor(Math.random() * upperCaseArray.length);
       finalSymbols.push(upperCaseArray[randomUpper]);
     }
-    //
+    // if user wants numeric characters to be included
     if (numericCase === true) {
       var randomNumeric = Math.floor(Math.random() * numericCaseArray.length);
       finalSymbols.push(numericCaseArray[randomNumeric]);
     }
-    //
+    // if user wants special characters to be included
     if (specialCase === true) {
       var randomSpecial = Math.floor(Math.random() * specialCaseArray.length);
       finalSymbols.push(specialCaseArray[randomSpecial]);
     }
-    //
-
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    //
-    // var randomLower = Math.floor(Math.random() * lowerCaseArray.length);
-    // var randomUpper = Math.floor(Math.random() * upperCaseArray.length);
-    // var randomNumeric = Math.floor(Math.random() * numericCaseArray.length);
-    // var randomSpecial = Math.floor(Math.random() * specialCaseArray.length);
-
-    //array with randomly generated symbols
     var randomIndex = Math.floor(Math.random() * finalSymbols.length);
     var finalChoice = finalSymbols[randomIndex];
     passwordArray.push(finalChoice);
   }
+  if (!lowerCase && !upperCase && !numericCase && !specialCase) {
+    alert(
+      "Woah, looks like you forgot to select a category for\nthe type of characters you'd like to be included\nin your password.\n[AT LEAST ONE CATEGORY MUST BE SELECTED]"
+    );
+    location.reload();
+  }
 
+  // console.log printing out the final result
   console.log("Password: " + passwordArray.join(""));
 
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-  //
-
-  // random category assignment
-
-  // random index assignment based on the category size
-
-  // function generatePassword() {}
-  // var password = generatePassword();
+  // applying the final result to the HTML
   var passwordText = document.querySelector("#password");
-
   passwordText.value = password;
-
-  //very final step -------------------------------------------------
   document.querySelector("#password").value = passwordArray.join("");
 }
 
-// Add event listener to generate button
+//event listener to generate button
 generateBtn.addEventListener("click", writePassword);
