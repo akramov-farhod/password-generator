@@ -25,6 +25,9 @@
   </details>
 
   ## Description 
+  Link:
+  https://akramov-farhod.github.io/password-generator/
+  
   An application that generates a random password based on the User's input
   
   ## Table of Contents
